@@ -45,7 +45,7 @@
             <button type="submit">註冊</button>
 
             <!-- 自動產生 csrf_token 隱藏欄位 -->
-            {!! csrf_field() !!}
+            {{ csrf_field() }}
         </form>
     </div>
     @endsection

@@ -129,7 +129,7 @@ class UserAuthController extends Controller {
         // 撈取使用者資料
         $User = User::where('email', $input['email'])->firstOrFail();
 
-        // // 列印出資料庫目前所有執行的 SQL 語法
+        // // 列印出資料庫目前所有執行的 SQL 語法 (For debug)
         // var_dump(DB::getQueryLog());
         // exit();
 
