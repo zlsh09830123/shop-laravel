@@ -14,6 +14,8 @@
         @include('components.validationErrorMessage')
 
         <form action="/merchandise/{{ $Merchandise->id }}" method="post" enctype="multipart/form-data">
+            <!-- 隱藏方法欄位 -->
+            {{ method_field('PUT')}}
 
             <label>
                 商品狀態：
@@ -46,7 +48,7 @@
             <label>
                 商品照片：
                 <input type="file" name="photo" placeholder="商品照片">
-                <img src="{{ $Merchandise->photo or '/assets/images/default-merchandise.png' }}" alt="">
+                <img src="{{ $Merchandise->photo ?? '/assets/images/default-merchandise.png' }}">
             </label>
 
             <label>
@@ -64,11 +66,7 @@
             <!-- 自動產生 csrf_token 隱藏欄位 -->
             {{ csrf_field() }}
 
-            <!-- 隱藏方法欄位 -->
-            {{ method_field('PUT')}}
-
-            <!-- 隱藏方法欄位:輸出結果 -->
-            <input type="hidden" name="_method" value="PUT">
+            
         </form>
     </div>
 @endsection

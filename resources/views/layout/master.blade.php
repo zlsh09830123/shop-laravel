@@ -9,20 +9,24 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
-        <ul class="nav">
-            @if(session()->has('user_id'))
-                <li><a href="/user/auth/sign-out">登出</a></li>
-            @else
-                <li><a href="/user/auth/sign-in">登入</a></li>
-                <li><a href="/user/auth/sign-up">註冊</a></li>
-            @endif
-        </ul>
-
+        <div class="container">
+            <ul class="nav justify-content-end">
+                @if(session()->has('user_id'))
+                    <li class="nav-item"><a class="nav-link" href="/user/auth/sign-out">登出</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/merchandise">商品列表</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/transaction">交易記錄</a></li>
+                @else
+                    <li class="nav-item"><a class="nav-link" href="/user/auth/sign-in">登入</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/user/auth/sign-up">註冊</a></li>
+                @endif
+            </ul>
+        </div>
+        
         <div class="container">
             @yield('content')
         </div>
 
-        <footer>
+        <footer class="text-center">
             <a href="#">聯絡我們</a>
         </footer>
     </body>

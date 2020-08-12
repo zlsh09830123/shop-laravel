@@ -33,6 +33,6 @@ class TransactionController extends Controller {
             'TransactionPaginate' => $TransactionPaginate,
         ];
 
-        return view('Transaction.listUserTransaction', $binding);
+        return view('transaction.listUserTransaction', $binding);
     }
 }

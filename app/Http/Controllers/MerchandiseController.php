@@ -9,6 +9,7 @@ use App\Shop\Entity\User;
 use DB;
 use Exception;
 use Validator; // 使用驗證器
+use Image;
 
 class MerchandiseController extends Controller {
 
@@ -22,9 +23,9 @@ class MerchandiseController extends Controller {
             'name_en' => '', // 商品英文名稱
             'introduction' => '', // 商品介紹
             'introduction_en' => '', // 商品英文介紹
-            'photo' => '', // 商品照片
-            'price' => '', // 價格
-            'reamin_count' => '', // 商品剩餘數量
+            'photo' => null, // 商品照片
+            'price' => 0, // 價格
+            'reamin_count' => 0, // 商品剩餘數量
         ];
         $Merchandise = Merchandise::create($merchandise_data);
 
@@ -44,7 +45,7 @@ class MerchandiseController extends Controller {
         }
 
         $binding = [
-            'teitle' => '編輯商品',
+            'title' => '編輯商品',
             'Merchandise' => $Merchandise,
         ];
         return view('merchandise.editMerchandise', $binding);
@@ -121,7 +122,7 @@ class MerchandiseController extends Controller {
             // 產生自訂隨機檔案名稱
             $file_name = uniqid() . '.' . $file_extension;
             // 檔案相對路徑
-            $file_relative_path = 'images/merchandise/' . $filename;
+            $file_relative_path = 'images/merchandise/' . $file_name;
             // 檔案存放目錄為對外公開 public 目錄下的相對位置
             $file_path = public_path($file_relative_path);
             // 裁切圖片
@@ -224,7 +225,7 @@ class MerchandiseController extends Controller {
         // 驗證資料
         $validator = Validator::make($input, $rules);
 
-        if($validator->falis()) {
+        if($validator->fails()) {
             // 資料驗證錯誤
             return redirect('/merchandise/' . $merchandise_id)->withErrors($validator)->withInput();
         }

@@ -31,18 +31,18 @@
                     </td>
                     <td>
                         <a href="/merchandise/{{ $Transaction->Merchandise->id }}">
-                            <img src="{{ $Transaction->Merchandise->photo or '/assets/images/default-merchandise.png' }}">
+                            <img src="{{ $Transaction->Merchandise->photo ?? '/assets/images/default-merchandise.png' }}">
                         </a>
                     </td>
                     <td> {{ $Transaction->price }} </td>
                     <td> {{ $Transaction->buy_count }} </td>
                     <td> {{ $Transaction->total_price }} </td>
-                    <td> {{ $Transaction->create_at }} </td>
+                    <td> {{ $Transaction->created_at }} </td>
                 </tr>
             @endforeach
         </table>
 
         <!-- 分頁頁數按鈕 -->
-        {{ $MerchandisePaginate->links() }} 
+        {{ $TransactionPaginate->links() }} 
     </div>
 @endsection

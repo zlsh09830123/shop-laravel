@@ -21,7 +21,7 @@
             <tr>
                 <th>照片</th>
                 <td>
-                    <img src="{{ $Merchandise->photo or '/assets/images/default-merchandise.png' }}">
+                    <img src="{{ $Merchandise->photo ?? '/assets/images/default-merchandise.png' }}">
                 </td>
             </tr>
             <tr>
@@ -46,7 +46,7 @@
                             @endfor
                         </select>
                         <button type="submit">購買</button>
-                        {{ $csrf_field() }}
+                        {{ csrf_field() }}
                     </form>
                 </td>
             </tr>

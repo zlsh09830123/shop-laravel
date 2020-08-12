@@ -150,7 +150,10 @@ class UserAuthController extends Controller {
         session()->put('user_id', $User->id);
 
         // 重新導向到原先使用者造訪頁面，沒有嘗試造訪頁則重新導向回首頁
-        return redirect()->intended('/');
+        // return redirect()->intended('/');
+        
+        // 登入後導向至商品列表
+        return redirect('/merchandise');
     }
 
     // 處理登出資料

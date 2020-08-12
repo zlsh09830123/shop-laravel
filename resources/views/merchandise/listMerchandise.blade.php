@@ -29,7 +29,7 @@
                     </td>
                     <td>
                         <a href="/merchandise/{{ $Merchandise->id }}">
-                            <img src="{{ $Merchandise->photo or '/assets/images/default-merchandise.png' }}">
+                            <img src="{{ $Merchandise->photo ?? '/assets/images/default-merchandise.png' }}">
                         </a>
                     </td>
                     <td> {{ $Merchandise->price }} </td>

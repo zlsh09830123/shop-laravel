@@ -13,6 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// 首頁導向至登入頁面
+Route::get('/', function(){
+    $binding= [
+        'title' => '登入',
+    ];
+    return view('auth.signIn', $binding);
+});
+
 // 使用者
 Route::group(['prefix' => 'user'], function(){
     // 使用者驗證

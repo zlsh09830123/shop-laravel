@@ -27,7 +27,7 @@
                 <tr>
                     <td> {{ $Merchandise->id }} </td>
                     <td> {{ $Merchandise->name }} </td>
-                    <td><img src="{{ $Merchandise->photo or '/assets/images/default-merchandise.png' }}"></td>
+                    <td><img src="{{ $Merchandise->photo ?? '/assets/images/default-merchandise.png' }}"></td>
                     <td>
                         @if($Merchandise->status == 'C')
                             建立中
