@@ -71,4 +71,4 @@
             <input type="hidden" name="_method" value="PUT">
         </form>
     </div>
-    @endsection
+@endsection
