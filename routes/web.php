@@ -55,6 +55,15 @@ Route::group(['prefix' => 'merchandise'], function(){
 
     // 指定商品
     Route::group(['prefix' => '{merchandise_id}'], function(){
+        // 商品單品檢視
+        Route::get('/', 'MerchandiseController@merchandiseItemPage')
+            ->where([
+                'merchandise_id' => '[0-9]+',
+            ]);
+
+        // 購買商品
+        Route::post('/buy', 'MerchandiseController@merchandiseItemBuyProcess')->middleware(['user.auth']);
+        
         Route::group(['middleware' => ['user.auth.admin']], function(){
             // 商品單品編輯頁面檢視
             Route::get('/edit', 'MerchandiseController@merchandiseItemEditPage');
@@ -62,11 +71,6 @@ Route::group(['prefix' => 'merchandise'], function(){
             // 商品單品資料修改
             Route::put('/', 'MerchandiseController@merchandiseItemUpdateProcess');
         });
-        // 商品單品檢視
-        Route::get('/', 'MerchandiseController@merchandiseItemPage');
-
-        // 購買商品
-        Route::post('/buy', 'MerchandiseController@merchandiseItemBuyProcess')->middleware(['user.auth']);
     });
 });
 
